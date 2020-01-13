@@ -1,6 +1,6 @@
 from liqpay import LiqPay
 from abc import ABC, abstractmethod
-import re, uuid, redis, json, requests
+import re, uuid, redis, json, requests, os
 from flask import request, render_template, Flask, redirect
 from flask_sslify import SSLify
 from telegram.message_controller import MessageController
@@ -12,7 +12,9 @@ new_link = "https://hopepaybot.herokuapp.com/"
 app = Flask(__name__, template_folder='templates')
 sslify = SSLify(app)
 
-redis_storage = redis.Redis(host='localhost', port=6379, db=0)
+redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost')
+redis_storage = redis.from_url(redis_url)
+
 
 public_key = "sandbox_i50128638989"
 private_key = "sandbox_WVoulgJClKaLoOZarwQH7W2hBqBjW25yuk66w6mU"

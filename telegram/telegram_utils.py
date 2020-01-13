@@ -9,7 +9,6 @@ import requests, json, re, uuid
 
 class TelegramUtils(View, BaseMassanger):
     def main_controller(self, data):
-        print(data)
         try:
             self.customer_place(data)
             return "OK"
