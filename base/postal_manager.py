@@ -9,7 +9,7 @@ def find_wirehouse(name, number):
             "CityName": name,
             "Language": "ru",
         },
-        "apiKey": "52e7cd348279fe4a3d0dba2c32d026ec"
+        "apiKey": "{postal key}"
     }
     response = requests.post("https://api.novaposhta.ua/v2.0/json/", json=data)
     wirehouses = json.loads(response.text)["data"]

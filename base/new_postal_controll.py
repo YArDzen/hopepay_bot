@@ -6,7 +6,7 @@ import requests, json
 class NewPostal:
     def create_agent(self, data, mode):
         emitent_data = {
-            "apiKey": "5c91a4239f54889de26a9a4a29698f16",
+            "apiKey": "{postal key}",
             "modelName": "Counterparty",
             "calledMethod": "save",
             "methodProperties": {
@@ -35,7 +35,7 @@ class NewPostal:
 
 
                 data = {
-                    "apiKey": "5c91a4239f54889de26a9a4a29698f16",
+                    "apiKey": "{postal key}",
                     "modelName": "TrackingDocument",
                     "calledMethod": "getStatusDocuments",
                     "methodProperties": {
@@ -49,7 +49,7 @@ class NewPostal:
                 }
 
                 if orders[order]["success"] != True:
-                    
+
                     response = json.loads(requests.post("https://api.novaposhta.ua/v2.0/json/", json=data).text)
                     if response["data"][0]["StatusCode"] == "9":
                         self.hold_complete(
